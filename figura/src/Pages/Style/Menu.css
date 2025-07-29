@@ -1,0 +1,21 @@
+.menu__main {
+  background-color: white;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 10px;
+}
+
+.menu__container {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.menu__containerTitle {
+  background-color: #a37924;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+.menu__containerTitlePrice {
+  text-align: right;
+}

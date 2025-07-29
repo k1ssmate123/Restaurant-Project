@@ -1,0 +1,14 @@
+.product__col {
+  border: 1px solid #a37924;
+  padding: 5px;
+}
+.product__name {
+  font-weight: bold;
+}
+.product__price {
+  text-align: right;
+  color: #a37924;
+}
+.product__cart {
+  padding-top: 25px;
+}
