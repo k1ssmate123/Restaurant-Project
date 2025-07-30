@@ -8,10 +8,11 @@ import { Link } from "react-router";
 import "./Header.css";
 import { useAuth } from "../Contexts/authContext.js";
 function Header() {
-  const { userData, isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
 
   function LoggedIn() {
     if (!isLoggedIn) {
+      console.log(sessionStorage.getItem("userName"));
       return (
         <Nav className="ms-auto">
           <Nav.Link as={Link} to="/login">
@@ -26,7 +27,7 @@ function Header() {
       return (
         <Nav className="ms-auto">
           <Nav.Link as={Link} to="/profile">
-            {userData.name}
+            {sessionStorage.getItem("userName")}
           </Nav.Link>
           <Nav.Link onClick={logout}>Kijelentkezés</Nav.Link>
         </Nav>

@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const useLogin = () => {
   const [error, setError] = useState("");
-  const [data, setData] = useState("");
 
   const login = async (email, password) => {
     try {
@@ -18,19 +17,18 @@ const useLogin = () => {
       }
 
       const result = await res.json();
-      setData(() => {
-        return result;
-      });
+      console.log(result);
+
       setError(() => {
         return "Sikeres bejelentkezés!";
       });
-      return { success: true };
+      return { success: true, data: result };
     } catch (error) {
       setError("Hiba történt: " + error);
       return { success: false };
     }
   };
-  return { login, error, data };
+  return { login, error };
 };
 
 export default useLogin;

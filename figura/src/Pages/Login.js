@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import useLogin from "../Hooks/useLogin.js";
 import { useAuth } from "../Contexts/authContext.js";
 function Login() {
-  const { login, error, data } = useLogin();
+  const { login, error } = useLogin();
 
   const { login: authLogin } = useAuth();
 
@@ -13,7 +13,11 @@ function Login() {
     const password = e.target.password.value;
     const result = await login(email, password);
     if (result.success) {
-      const user = { name: data.name, email: data.email, id: data.id };
+      const user = {
+        name: result.data.name,
+        email: result.data.email,
+        id: result.data.id,
+      };
       authLogin(user);
     }
   };
