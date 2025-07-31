@@ -5,13 +5,16 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router } from "react-router";
 import { AuthProvider } from "./Contexts/authContext";
+import { CartProvider } from "./Contexts/cartContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <AuthProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <CartProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </CartProvider>
     </AuthProvider>{" "}
   </Router>
 );

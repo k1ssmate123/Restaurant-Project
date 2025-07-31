@@ -7,14 +7,21 @@ import logo from "../img/logopixelaf.jpg";
 import { Link } from "react-router";
 import "./Header.css";
 import { useAuth } from "../Contexts/authContext.js";
+import { useCart } from "../Contexts/cartContext.js";
+import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 function Header() {
   const { isLoggedIn, logout } = useAuth();
-
+  const { emptyCart, cart, removeFromCart, fullPrice } = useCart();
   function LoggedIn() {
     if (!isLoggedIn) {
       console.log(sessionStorage.getItem("userName"));
       return (
         <Nav className="ms-auto">
+          {CartHandling()}
           <Nav.Link as={Link} to="/login">
             Bejelentkezés
           </Nav.Link>
@@ -26,6 +33,7 @@ function Header() {
     } else {
       return (
         <Nav className="ms-auto">
+          {CartHandling()}
           <Nav.Link as={Link} to="/profile">
             {sessionStorage.getItem("userName")}
           </Nav.Link>
@@ -35,6 +43,41 @@ function Header() {
     }
   }
 
+  function CartHandling() {
+    if (!emptyCart) {
+      const price = fullPrice;
+      return (
+        <DropdownButton
+          id="dropdown-basic-button"
+          title={
+            <span style={{ alignItems: "center" }}>
+              <ShoppingCartIcon />
+              {fullPrice()} Ft
+            </span>
+          }
+        >
+          {cart.map((x) => {
+            return (
+              <Dropdown.Item>
+                {x.name} - {x.price} Ft
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    removeFromCart(x);
+                  }}
+                >
+                  <DeleteIcon />
+                </Button>
+              </Dropdown.Item>
+            );
+          })}
+
+          <p>Összesen: {fullPrice()} Ft</p>
+        </DropdownButton>
+      );
+    }
+  }
   return (
     <Navbar
       collapseOnSelect
