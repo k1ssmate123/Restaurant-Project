@@ -8,11 +8,9 @@ import { Link } from "react-router";
 import "./Header.css";
 import { useAuth } from "../Contexts/authContext.js";
 import { useCart } from "../Contexts/cartContext.js";
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CartProduct from "./CartProduct.js";
 function Header() {
   const { isLoggedIn, logout } = useAuth();
   const { emptyCart, cart, removeFromCart, fullPrice } = useCart();
@@ -45,10 +43,8 @@ function Header() {
 
   function CartHandling() {
     if (!emptyCart) {
-      const price = fullPrice;
       return (
         <DropdownButton
-          id="dropdown-basic-button"
           title={
             <span style={{ alignItems: "center" }}>
               <ShoppingCartIcon />
@@ -57,20 +53,7 @@ function Header() {
           }
         >
           {cart.map((x) => {
-            return (
-              <Dropdown.Item>
-                {x.name} - {x.price} Ft
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    removeFromCart(x);
-                  }}
-                >
-                  <DeleteIcon />
-                </Button>
-              </Dropdown.Item>
-            );
+            return <CartProduct item={x} remove={removeFromCart} />;
           })}
 
           <p>Összesen: {fullPrice()} Ft</p>

@@ -7,10 +7,11 @@ export const CartProvider = ({ children }) => {
     const stored = sessionStorage.getItem("cart");
     return stored ? JSON.parse(stored) : [];
   });
-  let emptyCart = false;
+  const [emptyCart, setEmpty] = useState(true);
+
   useEffect(() => {
     sessionStorage.setItem("cart", JSON.stringify(cart));
-    emptyCart = !!!cart && cart.length > 0;
+    setEmpty(cart.length == 0);
   }, [cart]);
 
   const addToCart = (product) => {
