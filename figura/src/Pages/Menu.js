@@ -3,12 +3,19 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
 import Product from "../Components/Product";
 import useFetch from "../Hooks/useFetch";
 import "./Style/Menu.css";
-
+import SearchIcon from "@mui/icons-material/Search";
 function Menu() {
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+
   const { data: menuCategories, error: categoryError } = useFetch(
     "https://localhost:7146/Menu/Categories"
   );
@@ -50,7 +57,7 @@ function Menu() {
     <Form.Check
       key={category.id}
       type="checkbox"
-      id={category.id}
+      id={category.id + "cat"}
       label={category.name}
       checked={choosenCategories.some((c) => c.id === category.id)}
       onChange={(e) => handleCategoryChange(e, category)}
@@ -88,9 +95,20 @@ function Menu() {
 
   return (
     <Container className="menu__main">
-      <Form>{menuCategories.map(checkBoxes)}</Form>
-      <h1 className="menu__title">Étlap / Itallap</h1>
+      <h1 className="menu__title">
+        <Button onClick={toggleDrawer(true)}>
+          <SearchIcon />
+        </Button>
+        Étlap / Itallap
+      </h1>
       {renderMenuItems()}
+      <Drawer
+        className="menu__drawer"
+        open={open}
+        onClose={toggleDrawer(false)}
+      >
+        <Form>{menuCategories.map(checkBoxes)}</Form>
+      </Drawer>
     </Container>
   );
 }
