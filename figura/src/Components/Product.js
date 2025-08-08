@@ -6,6 +6,7 @@ import "./Product.css";
 import { useCart } from "../Contexts/cartContext.js";
 function Product({ name, price, id }) {
   const { addToCart } = useCart();
+
   return (
     <>
       <Col className="product__col product__name">{name}</Col>
@@ -15,7 +16,9 @@ function Product({ name, price, id }) {
       </Col>
       <Col className="product__col product__cart">
         <Button
-          onClick={() => addToCart({ id: id, name: name, price: price })}
+          onClick={() => {
+            addToCart({ id: id, name: name, price: price });
+          }}
           variant="outline-secondary"
           id={id}
           name={id}

@@ -65,10 +65,11 @@ function Header() {
   }
   return (
     <Navbar
+      data-bs-theme="light"
       collapseOnSelect
       sticky="top"
       expand="lg"
-      className="bg-body-tertiary"
+      className="header__container"
     >
       <Container fluid>
         <Navbar.Brand>

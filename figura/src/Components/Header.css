@@ -3,5 +3,13 @@
 }
 
 .header__dropdownButton {
-  margin-top: 10px;
+  margin-top: 5px;
+}
+
+.header__container {
+  background-image: linear-gradient(
+    to top,
+    rgba(145, 82, 77, 0.8),
+    rgba(145, 82, 77, 0.1)
+  );
 }
