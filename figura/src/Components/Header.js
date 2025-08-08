@@ -11,6 +11,7 @@ import { useCart } from "../Contexts/cartContext.js";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CartProduct from "./CartProduct.js";
+import Badge from "react-bootstrap/Badge";
 function Header() {
   const { isLoggedIn, logout } = useAuth();
   const { emptyCart, cart, removeFromCart, fullPrice } = useCart();
@@ -45,10 +46,11 @@ function Header() {
     if (!emptyCart) {
       return (
         <DropdownButton
+          className="header__dropdownButton"
           title={
             <span style={{ alignItems: "center" }}>
               <ShoppingCartIcon />
-              {fullPrice()} Ft
+              <Badge bg="info"> {fullPrice()} Ft</Badge>
             </span>
           }
         >

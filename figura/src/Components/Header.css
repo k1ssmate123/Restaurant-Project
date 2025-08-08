@@ -1,5 +1,7 @@
-.header__logo
-{ 
-    width:25%;
+.header__logo {
+  width: 25%;
 }
 
+.header__dropdownButton {
+  margin-top: 10px;
+}

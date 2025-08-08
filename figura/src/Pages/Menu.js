@@ -9,12 +9,14 @@ import Product from "../Components/Product";
 import useFetch from "../Hooks/useFetch";
 import "./Style/Menu.css";
 import SearchIcon from "@mui/icons-material/Search";
-function Menu() {
-  const [open, setOpen] = React.useState(false);
+import Spinner from "react-bootstrap/Spinner";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
+function Menu() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const { data: menuCategories, error: categoryError } = useFetch(
     "https://localhost:7146/Menu/Categories"
@@ -42,7 +44,11 @@ function Menu() {
   }
 
   if (!menuCategories || !menuItems) {
-    return <div className="menu__loading">Betöltés...</div>;
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
   const handleCategoryChange = (e, category) => {
@@ -96,19 +102,21 @@ function Menu() {
   return (
     <Container className="menu__main">
       <h1 className="menu__title">
-        <Button onClick={toggleDrawer(true)}>
+        <Button onClick={handleShow}>
           <SearchIcon />
         </Button>
         Étlap / Itallap
       </h1>
       {renderMenuItems()}
-      <Drawer
-        className="menu__drawer"
-        open={open}
-        onClose={toggleDrawer(false)}
-      >
-        <Form>{menuCategories.map(checkBoxes)}</Form>
-      </Drawer>
+
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Szűrés</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Form>{menuCategories.map(checkBoxes)}</Form>
+        </Offcanvas.Body>
+      </Offcanvas>
     </Container>
   );
 }
