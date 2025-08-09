@@ -26,7 +26,7 @@ namespace WebApi
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             builder.Services.AddSingleton<TokenProvider>();
             builder.Services.AddScoped<IPasswordHelper, PasswordHelper>();
-            builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<IUserRepository, UserRepository>(); 
             builder.Services.AddTransient<IMenuRepository, MenuRepository>();
             //builder.Services.AddAuthorization();
             //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

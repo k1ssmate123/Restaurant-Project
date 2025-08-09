@@ -8,7 +8,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Menu from "./Pages/Menu";
 import Logout from "./Logout";
-
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="App">
@@ -22,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

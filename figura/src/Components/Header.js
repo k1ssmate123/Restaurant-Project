@@ -17,7 +17,6 @@ function Header() {
   const { emptyCart, cart, removeFromCart, fullPrice } = useCart();
   function LoggedIn() {
     if (!isLoggedIn) {
-      console.log(sessionStorage.getItem("userName"));
       return (
         <Nav className="ms-auto">
           {CartHandling()}

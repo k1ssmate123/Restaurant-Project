@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import PurchaseToast from "../Components/PurchaseToast";
 
 const CartContext = createContext();
 
@@ -16,6 +17,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
+    return <PurchaseToast />;
   };
 
   const removeFromCart = (product) => {

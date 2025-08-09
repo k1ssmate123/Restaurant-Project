@@ -4,9 +4,18 @@ import Button from "react-bootstrap/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./Product.css";
 import { useCart } from "../Contexts/cartContext.js";
+import PurchaseToast from "./PurchaseToast.js";
+import { toast } from "react-toastify";
 function Product({ name, price, id }) {
   const { addToCart } = useCart();
 
+  const handleClick = () => {
+    addToCart({ id: id, name: name, price: price });
+    toast.success(`${name} hozzáadva a kosárhoz!`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
+  };
   return (
     <>
       <Col className="product__col product__name">{name}</Col>
@@ -16,9 +25,7 @@ function Product({ name, price, id }) {
       </Col>
       <Col className="product__col product__cart">
         <Button
-          onClick={() => {
-            addToCart({ id: id, name: name, price: price });
-          }}
+          onClick={handleClick}
           variant="outline-secondary"
           id={id}
           name={id}
