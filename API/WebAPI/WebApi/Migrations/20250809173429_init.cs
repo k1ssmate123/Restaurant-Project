@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebApi.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -79,7 +79,19 @@ namespace WebApi.Migrations
             migrationBuilder.InsertData(
                 table: "MenuItems",
                 columns: new[] { "Id", "CategoryId", "Name", "Price" },
-                values: new object[] { 1, 1, "Gyümölcsleves tejszínhabbal", 990 });
+                values: new object[,]
+                {
+                    { 1, 1, "Gyümölcsleves tejszínhabbal", 990 },
+                    { 2, 1, "Paradicsomleves mozzarellával", 990 },
+                    { 3, 1, "Fokhagymakrémleves pirított mandulával", 990 },
+                    { 4, 1, "Újházy tyúkhúsleves gazdagon", 1490 },
+                    { 5, 1, "Gulyásleves", 1590 },
+                    { 6, 1, "Babgulyás", 1590 },
+                    { 7, 2, "Rántott gombafej tartármártással", 1790 },
+                    { 8, 2, "Rántott sajt tartármártással", 2090 },
+                    { 9, 2, "Hortobágyi húsos palacsinta", 2090 },
+                    { 10, 3, "Csirkemell fűszervajjal", 2390 }
+                });
         }
 
         /// <inheritdoc />

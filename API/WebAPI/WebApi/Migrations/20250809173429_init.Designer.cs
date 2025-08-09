@@ -12,8 +12,8 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250727175257_Init")]
-    partial class Init
+    [Migration("20250809173429_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,69 @@ namespace WebApi.Migrations
                             CategoryId = 1,
                             Name = "Gyümölcsleves tejszínhabbal",
                             Price = 990
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            Name = "Paradicsomleves mozzarellával",
+                            Price = 990
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            Name = "Fokhagymakrémleves pirított mandulával",
+                            Price = 990
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            Name = "Újházy tyúkhúsleves gazdagon",
+                            Price = 1490
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 1,
+                            Name = "Gulyásleves",
+                            Price = 1590
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 1,
+                            Name = "Babgulyás",
+                            Price = 1590
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 2,
+                            Name = "Rántott gombafej tartármártással",
+                            Price = 1790
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 2,
+                            Name = "Rántott sajt tartármártással",
+                            Price = 2090
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 2,
+                            Name = "Hortobágyi húsos palacsinta",
+                            Price = 2090
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 3,
+                            Name = "Csirkemell fűszervajjal",
+                            Price = 2390
                         });
                 });
 
