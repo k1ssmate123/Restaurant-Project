@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./Product.css";
 import { useCart } from "../Contexts/cartContext.js";
-import PurchaseToast from "./PurchaseToast.js";
+
 import { toast } from "react-toastify";
 function Product({ name, price, id }) {
   const { addToCart } = useCart();
