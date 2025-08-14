@@ -8,10 +8,11 @@ import Button from "@mui/material/Button";
 import Product from "../Components/Product";
 import useFetch from "../Hooks/useFetch";
 import "./Style/Menu.css";
-import SearchIcon from "@mui/icons-material/Search";
+import DehazeIcon from "@mui/icons-material/Dehaze";
 import Spinner from "react-bootstrap/Spinner";
 import Offcanvas from "react-bootstrap/Offcanvas";
-
+import ClearAllIcon from "@mui/icons-material/ClearAll";
+import SelectAllIcon from "@mui/icons-material/SelectAll";
 function Menu() {
   const [show, setShow] = useState(false);
 
@@ -101,17 +102,39 @@ function Menu() {
 
   return (
     <Container className="menu__main">
-      <h1 className="menu__title">
+      <h1 class="menu__title">
         <Button onClick={handleShow}>
-          <SearchIcon />
+          <p class="menu__titleButton">
+            <DehazeIcon />
+          </p>
         </Button>
-        Étlap / Itallap
+        <div class="menu__titleLabel">Étlap / Itallap</div>
       </h1>
       {renderMenuItems()}
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Szűrés</Offcanvas.Title>
+          <Offcanvas.Title>
+            Szűrés
+            <br />
+            <Button
+              onClick={() => {
+                setCategories([]);
+              }}
+            >
+              Feltételek törlése
+              <ClearAllIcon />
+            </Button>
+            <br />
+            <Button
+              onClick={() => {
+                setCategories(menuCategories);
+              }}
+            >
+              Összes kijelölése
+              <SelectAllIcon />
+            </Button>
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>{menuCategories.map(checkBoxes)}</Form>

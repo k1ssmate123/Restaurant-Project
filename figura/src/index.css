@@ -5,13 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-attachment: fixed;
-
-  background-image: linear-gradient(
-    to top,
-    rgba(175, 101, 101, 0.3),
-    rgba(175, 101, 101, 0.8)
-  );
+  background-color: #eddec2 !important;
 }
 
 code {
