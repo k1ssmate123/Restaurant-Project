@@ -1,5 +1,5 @@
 import "./Style/Home.css";
-import Slideshow from "../Components/Slideshow";
+import Slideshow from "../Components/Slideshow/Slideshow";
 
 function Home() {
   return (

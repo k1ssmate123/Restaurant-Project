@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
 
-import Header from "./Components/Header";
+import Header from "./Components/Navbar/Header";
 import Home from "./Pages/Home";
 import Gallery from "./Pages/Gallery";
 import Login from "./Pages/Login";
@@ -22,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
       </Routes>
-      <ToastContainer />
+      <ToastContainer position="top-center" autoClose={false} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart } from "../Contexts/cartContext.js";
+import { useCart } from "../../Contexts/cartContext.js";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CartProduct from "./CartProduct.js";

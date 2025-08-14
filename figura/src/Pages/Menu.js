@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
+
+/* React Bootstrap/Styling */
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "@mui/material/Button";
-import useFetch from "../Hooks/useFetch";
-import "./Style/Menu.css";
-import DehazeIcon from "@mui/icons-material/Dehaze";
 import Spinner from "react-bootstrap/Spinner";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import "./Style/Menu.css";
+
+/* Icons */
+import DehazeIcon from "@mui/icons-material/Dehaze";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import SelectAllIcon from "@mui/icons-material/SelectAll";
-import MenuProduct from "../Components/MenuProduct";
+
+/*Custom Components/Hooks */
+import MenuItemsRenderer from "../Components/Menu/MenuItemsRenderer";
+import useFetch from "../Hooks/useFetch";
+
 function Menu() {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const { data: menuCategories, error: categoryError } = useFetch(
     "https://localhost:7146/Menu/Categories"
@@ -67,36 +72,24 @@ function Menu() {
     />
   );
 
-  const renderCategory = (category) => {
-    if (choosenCategories.find((c) => c.id === category.id)) {
-      const itemsInCategory = menuItems.filter(
-        (item) => item.categoryId === category.id
-      );
-
-      return (
-        <MenuProduct category={category} itemsInCategory={itemsInCategory} />
-      );
-    }
-    return null;
-  };
-
-  const renderMenuItems = () => {
-    return menuCategories.map(renderCategory);
-  };
-
   return (
     <Container className="menu__main">
       <h1 class="menu__title">
-        <Button onClick={handleShow}>
+        <Button onClick={() => setShow(true)}>
           <p class="menu__titleButton">
             <DehazeIcon />
           </p>
         </Button>
         <div class="menu__titleLabel">Étlap / Itallap</div>
       </h1>
-      {renderMenuItems()}
 
-      <Offcanvas show={show} onHide={handleClose}>
+      <MenuItemsRenderer
+        menuCategories={menuCategories}
+        menuItems={menuItems}
+        choosenCategories={choosenCategories}
+      />
+
+      <Offcanvas show={show} onHide={() => setShow(false)}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             Szűrés

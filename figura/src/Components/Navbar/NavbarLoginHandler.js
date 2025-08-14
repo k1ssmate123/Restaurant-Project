@@ -1,5 +1,5 @@
-import { useAuth } from "../Contexts/authContext.js";
-import CartHandler from "./CartHandler.js";
+import { useAuth } from "../../Contexts/authContext.js";
+import CartHandler from "../Cart/CartHandler.js";
 import { Link } from "react-router";
 import Nav from "react-bootstrap/Nav";
 
