@@ -12,8 +12,8 @@ function Product({ name, price, id }) {
   const handleClick = () => {
     addToCart({ id: id, name: name, price: price });
     toast.success(`${name} hozzáadva a kosárhoz!`, {
-      position: "top-right",
-      autoClose: 2000,
+      position: "bottom-right",
+      autoClose: 350,
     });
   };
   return (
