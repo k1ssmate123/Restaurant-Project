@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import Product from "../Components/Product";
 import useFetch from "../Hooks/useFetch";
 import "./Style/Menu.css";
 import DehazeIcon from "@mui/icons-material/Dehaze";
@@ -13,9 +9,9 @@ import Spinner from "react-bootstrap/Spinner";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import SelectAllIcon from "@mui/icons-material/SelectAll";
+import MenuProduct from "../Components/MenuProduct";
 function Menu() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -30,7 +26,7 @@ function Menu() {
   const [choosenCategories, setCategories] = useState([]);
 
   useEffect(() => {
-    if (menuCategories && choosenCategories.length === 0) {
+    if (menuCategories) {
       setCategories(menuCategories);
     }
   }, [menuCategories]);
@@ -52,8 +48,8 @@ function Menu() {
     );
   }
 
-  const handleCategoryChange = (e, category) => {
-    if (e.target.checked) {
+  const handleCategoryChange = (isChecked, category) => {
+    if (isChecked) {
       setCategories([...choosenCategories, category]);
     } else {
       setCategories(choosenCategories.filter((c) => c.id !== category.id));
@@ -67,7 +63,7 @@ function Menu() {
       id={category.id + "cat"}
       label={category.name}
       checked={choosenCategories.some((c) => c.id === category.id)}
-      onChange={(e) => handleCategoryChange(e, category)}
+      onChange={(e) => handleCategoryChange(e.target.checked, category)}
     />
   );
 
@@ -78,19 +74,7 @@ function Menu() {
       );
 
       return (
-        <React.Fragment key={category.id}>
-          <Row className="menu__containerTitle">
-            <Col>{category.name}</Col>
-            <Col className="menu__containerTitlePrice">Bruttó ár</Col>
-            <Col></Col>
-          </Row>
-
-          {itemsInCategory.map((item) => (
-            <Row key={item.id} className="menu__itemRow">
-              <Product name={item.name} price={item.price} id={item.id} />
-            </Row>
-          ))}
-        </React.Fragment>
+        <MenuProduct category={category} itemsInCategory={itemsInCategory} />
       );
     }
     return null;
@@ -119,7 +103,9 @@ function Menu() {
             <br />
             <Button
               onClick={() => {
-                setCategories([]);
+                setCategories(() => {
+                  return [];
+                });
               }}
             >
               Feltételek törlése

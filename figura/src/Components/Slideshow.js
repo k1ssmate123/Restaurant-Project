@@ -2,7 +2,7 @@ import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
 import SlideshowImages from "./SlideshowImages";
 const divStyle = {
   display: "grid",
@@ -24,7 +24,7 @@ function Slideshow() {
       {SlideshowImages.map((slideImage, index) => (
         <div key={index}>
           <div>
-            <img style={divStyle} src={slideImage} />
+            <img alt={index} style={divStyle} src={slideImage} />
           </div>
         </div>
       ))}
