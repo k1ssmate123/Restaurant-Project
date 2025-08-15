@@ -7,7 +7,7 @@ import Gallery from "./Pages/Gallery";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Menu from "./Pages/Menu";
-import Logout from "./Logout";
+import Logout from "./Pages/Logout";
 import { ToastContainer } from "react-toastify";
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
       </Routes>
-      <ToastContainer position="top-center" autoClose={false} />
+      <ToastContainer />
     </div>
   );
 }
