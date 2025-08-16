@@ -10,7 +10,7 @@ const useRegister = () => {
     }
 
     try {
-      const res = await fetch("https://localhost:7146/User/Register", {
+      const res = await fetch("http://192.168.1.39:5036/User/Register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

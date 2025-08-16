@@ -21,11 +21,11 @@ function Menu() {
   const [show, setShow] = useState(false);
 
   const { data: menuCategories, error: categoryError } = useFetch(
-    "https://localhost:7146/Menu/Categories"
+    "http://192.168.1.39:5036/Menu/Categories"
   );
 
   const { data: menuItems, error: itemError } = useFetch(
-    "https://localhost:7146/Menu/Items"
+    "http://192.168.1.39:5036/Menu/Items"
   );
 
   const [choosenCategories, setCategories] = useState([]);
@@ -74,13 +74,13 @@ function Menu() {
 
   return (
     <Container className="menu__main">
-      <h1 class="menu__title">
+      <h1 className="menu__title">
         <Button onClick={() => setShow(true)}>
-          <p class="menu__titleButton">
-            <DehazeIcon />
+          <p className="menu__titleButton">
+            <DehazeIcon /> Szűrés
           </p>
         </Button>
-        <div class="menu__titleLabel">Étlap / Itallap</div>
+        <div className="menu__titleLabel">Étlap / Itallap</div>
       </h1>
 
       <MenuItemsRenderer

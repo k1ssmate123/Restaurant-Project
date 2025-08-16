@@ -6,7 +6,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 function CartProduct({ item, remove }) {
   return (
     <Dropdown.Item
-      as="div"
       style={{
         display: "flex",
         justifyContent: "space-between",

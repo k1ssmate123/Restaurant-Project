@@ -1,14 +1,32 @@
-.product__col {
-  border: 1px solid #a37924;
-  padding: 5px;
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
 }
-.product__name {
+
+.product-info {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
   font-weight: bold;
 }
-.product__price {
-  text-align: right;
-  color: #a37924;
+
+.product-delivery {
+  font-size: 90%;
+  margin: 0;
 }
-.product__cart {
-  padding-top: 25px;
+
+.product-local {
+  font-size: 70%;
+  font-style: italic;
+  margin: 0;
+}
+
+.product-button {
+  flex-shrink: 0;
 }

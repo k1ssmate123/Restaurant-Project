@@ -26,10 +26,8 @@
   background-color: rgb(175, 137, 101);
   padding-bottom: 5px;
   padding-top: 5px;
+  padding-left: 12px;
   font-weight: bold;
-}
-
-.menu__containerTitlePrice {
-  text-align: right;
-  margin: -12px;
+  margin-left: -12px;
+  margin-right: -12px;
 }

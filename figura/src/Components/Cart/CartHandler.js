@@ -23,8 +23,8 @@ function CartHandler() {
         </span>
       }
     >
-      {cart.map((x) => {
-        return <CartProduct item={x} remove={removeFromCart} />;
+      {cart.map((x, index) => {
+        return <CartProduct key={index} item={x} remove={removeFromCart} />;
       })}
       <Dropdown.Divider />
       <Dropdown.Item>Összesen: {fullPrice()} Ft</Dropdown.Item>

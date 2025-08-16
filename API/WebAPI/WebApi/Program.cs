@@ -28,6 +28,14 @@ namespace WebApi
             builder.Services.AddScoped<IPasswordHelper, PasswordHelper>();
             builder.Services.AddTransient<IUserRepository, UserRepository>(); 
             builder.Services.AddTransient<IMenuRepository, MenuRepository>();
+            builder.Services.AddCors(options => options.AddPolicy("Everything", policy =>
+            {
+                policy
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+            }));
+
             //builder.Services.AddAuthorization();
             //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             //    .AddJwtBearer(o => {
@@ -54,15 +62,10 @@ namespace WebApi
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+       
 
             app.UseAuthorization();
-
-            app.UseCors(x => x
-    .AllowCredentials()
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-    .WithOrigins("http://localhost:3000"));
+            app.UseCors("Everything");
             //app.UseAuthentication();
             //app.UseAuthorization();
             app.Run();

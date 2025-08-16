@@ -6,15 +6,16 @@ import Product from "../Product";
 function MenuProduct({ category, itemsInCategory }) {
   return (
     <React.Fragment key={category.id}>
-      <Row className="menu__containerTitle">
-        <Col>{category.name}</Col>
-        <Col className="menu__containerTitlePrice">Bruttó ár</Col>
-        <Col></Col>
-      </Row>
+      <div className="menu__containerTitle">{category.name}</div>
 
-      {itemsInCategory.map((item) => (
+      {itemsInCategory.map((item, index) => (
         <Row key={item.id} className="menu__itemRow">
-          <Product name={item.name} price={item.price} id={item.id} />
+          <Product
+            name={item.name}
+            key={index}
+            price={item.price}
+            id={item.id}
+          />
         </Row>
       ))}
     </React.Fragment>
